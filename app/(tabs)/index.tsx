@@ -6,6 +6,7 @@ import Button from '@/components/Button';
 import CircleButton from '@/components/CircleButton';
 import EmojiList from '@/components/EmojiList';
 import EmojiPicker from '@/components/EmojiPicker';
+import EmojiSticker from '@/components/EmojiSticker';
 import IconButton from '@/components/IconButton';
 import ImageViewer from '@/components/ImageViewer';
 
@@ -51,13 +52,8 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        {pickedEmoji ? (
-        <View style={styles.imageContainer}>
-          <ImageViewer imgSource={pickedEmoji} selectedImage={selectedImage} />
-        </View>
-        ) : (
-          <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
-        )}
+        <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
+        {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
@@ -87,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageContainer: {
-    flex: 1,
+    flex: 1
   },
    footerContainer: {
     flex: 1 / 3,
