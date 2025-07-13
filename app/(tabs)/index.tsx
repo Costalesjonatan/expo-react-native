@@ -51,7 +51,13 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
+        {pickedEmoji ? (
+        <View style={styles.imageContainer}>
+          <ImageViewer imgSource={pickedEmoji} selectedImage={selectedImage} />
+        </View>
+        ) : (
+          <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
+        )}
       </View>
       {showAppOptions ? (
         <View style={styles.optionsContainer}>
@@ -69,7 +75,7 @@ export default function Index() {
       )}
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
-      </EmojiPicker>
+      </EmojiPicker>  
     </View>
   );
 }
